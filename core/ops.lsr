@@ -1,0 +1,25 @@
+
+@operator(scoped_destroy)
+pub trait Drop{
+    drop :(&mut self);
+}
+
+@operator(add)
+pub trait Add[U=Self]{
+    add :(self,U);
+}
+
+@operator(sub)
+pub trait Sub[U=Self]{
+    sub :(self,U);
+}
+
+@operator(mul)
+pub trait Mul[U=Self]{
+    add :(self,U);
+}
+
+@operator(div)
+pub trait Div[U=Self]{
+    sub :(self,U);
+}

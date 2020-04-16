@@ -1,0 +1,14 @@
+@no_link(core)
+@no_link(std)
+@no_warn(unstable,lib_features)
+@enable(lang_item,import_intrinsic,operator_traits)
+root;
+
+pub mod ops;
+pub mod primitive;
+@unstable_api(lib_intrinsics)
+pub mod intrinsics;
+pub mod copy;
+pub mod mem;
+pub mod sync;
+

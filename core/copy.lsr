@@ -1,0 +1,13 @@
+
+
+@lang_item(copy_safe)
+pub trait Copy{}
+
+pub trait Clone{
+    function clone :(&self)->Self;
+}
+
+impl Clone forall T where T: Copy{
+    @import_intrinsic(lang.bitwise_copy)
+    function clone :(&self)->Self;
+}

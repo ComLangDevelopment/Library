@@ -1,0 +1,37 @@
+
+@note(unsafe_trait)
+pub trait Send{}
+
+impl Send for all T: auto{}
+
+impl !Send for *const T{}
+impl !Send for *mut T{}
+impl !Send for &mut T where T: !Send{}
+
+@note(unsafe_trait)
+pub trait Sync{}
+impl Sync for all T: auto{}
+impl !Sync for all &mut T where T: !Sync{}
+
+impl !Send for all &T where T: !Sync{}
+impl !Sync for all &T where T: !Sync{}
+
+
+pub mod atomic{
+
+    @lang_item(atomic_memory_order)
+    pub data MemoryOrder{
+        Relaxed,
+        Acquire,
+        Release
+        AcqRel,
+        SeqCst
+    }
+
+    @import_intrinsic(atomic.compiler_fence)
+    pub compiler_fence: (MemoryOrder)->();
+
+    @import_intrinsic(atomic.compiler_fence)
+    pub fence: (MemoryOrder)->();
+}
+

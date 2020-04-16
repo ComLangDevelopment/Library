@@ -1,0 +1,39 @@
+
+@import_intrinsic(lang.sized_transmute)
+pub transmute: [T,U] T->U;
+
+@import_intrinsic(lang.bitwise_copy)
+pub transmute_copy [T: MaybeUnsized,U] &T->U;
+
+@import_intrinsic(lang.forget_value)
+pub forget: [T] T->(); // May not need this as an intrinsic
+
+@import_intrinsic(lang.black_box)
+pub black_box: [T] T->T;
+
+@import_intrinsic(lang.optimizer_hint)
+pub assume: bool->();
+
+@import_intrinsic(lang.zeroed_mem)
+pub zeros: const [T] ()->T;
+
+@import_intrinsic(lang.volatile_store)
+pub volatile_store: [T] (*mut T,T)->();
+
+@import_intrinsic(lang.volatile_load)
+pub volatile_read: [T] *T->T;
+
+@import_intrinsic(lang.read)
+pub read: [T] *T->T;
+
+@import_intrinsic(lang.write)
+pub write: [T] (*mut T,T)->T;
+
+@import_intrinsic(lang.side_effect)
+pub side_effect: ()->();
+
+@import_intrinsic(lang.size_of)
+pub size_of: const [T] ()->usize;
+
+@import_intrinsic(lang.alignment)
+pub alignment: const [T] ()->usize;

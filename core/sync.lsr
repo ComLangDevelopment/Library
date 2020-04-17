@@ -20,6 +20,7 @@ impl !Sync for all &T where T: !Sync{}
 pub mod atomic{
 
     @lang_item(atomic_memory_order)
+    @layout(C)
     pub data MemoryOrder{
         Relaxed,
         Acquire,

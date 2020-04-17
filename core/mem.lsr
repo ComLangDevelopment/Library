@@ -2,10 +2,13 @@
 //! Explicitly runs the destructor for a value
 pub drop = (x){}; // No, like rust, drop is not magic
 
+@no_warn(intrinsic)
 pub forget = (x) lib::intrinsics::forget(x);
 
 
+@no_warn(intrinsic)
 pub size_of = const [T] () lib::intrinsics::size_of[T]();
+@no_warn(intrinsic)
 pub alignment = const [T] () lib::intrinsics::alignment[T]();
 
 @note(unsafe_code)

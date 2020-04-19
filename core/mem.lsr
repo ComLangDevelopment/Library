@@ -8,6 +8,14 @@ pub forget = (x) lib::intrinsics::forget(x);
 pub size_of = const [T] () lib::intrinsics::size_of[T]();
 pub alignment = const [T] () lib::intrinsics::alignment[T]();
 
-@note(unsafe_code)
-pub zero = const () lib::intrinsics::zero();
+pub use lib::intrinsics::zero; // Re-exporting the private api, because I'd rather zero() not typecheck in const unless T: ZeroSafe
+
+@no_warn(unsafe_code)
+pub zero_checked = const [T: ZeroSafe]() -> T lib::intrinsics::zero();
+
+@lang_item(zerosafe)
+@sealed // This is absolutely magic
+// Probably the most magic the entire standard library will ever see, except maybe zero not typechecking only in const.
+pub trait ZeroSafe{} 
+
 
